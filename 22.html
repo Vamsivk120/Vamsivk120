@@ -1,0 +1,237 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Anil & Swetha Wedding Invitation</title> 
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@600&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet"> 
+<style> 
+* { margin:0; padding:0; box-sizing:border-box; } 
+body { font-family:'Playfair Display', serif; background:#FDF6EC; color:#4A2C2A; overflow-x:hidden; } 
+
+/* PETALS */
+.petal { 
+  position:fixed; 
+  top:-10px; 
+  width:14px; 
+  height:14px; 
+  background:#FF8FA3;
+  border-radius:50% 0; 
+  animation:fall 10s linear infinite; 
+  z-index:9999;
+  pointer-events:none;
+} 
+@keyframes fall { 
+ 0% { transform:translateY(0) rotate(0deg); opacity:0.8; } 
+ 100% { transform:translateY(100vh) rotate(720deg); opacity:0; } 
+}
+
+/* ENVELOPE */
+.envelope { 
+  height:100vh; width:100%;
+  background:#FFFFF0; 
+  background-image:radial-gradient(#E7CFC1 1px, transparent 1px); 
+  background-size:40px 40px; 
+  display:flex; flex-direction:column; justify-content:center; align-items:center; 
+  position:fixed; top:0; left:0; z-index:999; cursor:pointer; text-align:center; 
+  border-top:8px solid #B45309; border-bottom:8px solid #B45309; 
+  transition: all 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+} 
+.envelope.hide { transform: translateY(-120%) scale(1.2); opacity: 0; }
+
+.seal { 
+  width:150px; height:150px; 
+  background:#E65C00;
+  border-radius:50%; 
+  display:flex; flex-direction:column; justify-content:center; align-items:center; 
+  font-family:'Allura', cursive; 
+  font-size:3.5rem; 
+  color:#FFFFFF;
+  box-shadow:0 8px 25px rgba(0,0,0,0.25); 
+  margin:20px 0; 
+  border:4px solid #FFD700;
+  position:relative;
+  animation: pulse 2s infinite;
+} 
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+.seal .a { position:absolute; top:15px; font-size:3rem; }
+.seal .s { position:absolute; bottom:15px; font-size:3rem; }
+.seal .heart { font-size:2.5rem; color:#FF1493; }
+
+.envelope h3 { color:#B45309; font-family:'Dancing Script', cursive; font-size:2.3rem; margin-bottom:10px; } 
+.envelope p { color:#4A2C2A; font-size:1.1rem; line-height:1.6; padding:0 20px; } 
+
+/* MAIN CONTENT */
+.section { min-height:100vh; padding:50px 20px; text-align:center; display:none; opacity:0; transform: translateY(30px); transition: all 1s ease 0.6s; background:#FDF6EC; position:relative; z-index:2; } 
+.section.active { display:block; opacity:1; transform: translateY(0); } 
+h1 { font-family:'Allura', cursive; font-size:3.8rem; color:#B45309; margin:10px 0; } 
+.shloka { font-size:1.1rem; color:#7C2D12; margin:15px 0; line-height:1.8; } 
+.card { background:white; color:#4A2C2A; border:2px solid #E7CFC1; border-radius:20px; padding:40px 25px; max-width:650px; margin:0 auto 40px; box-shadow:0 10px 30px rgba(0,0,0,0.1); } 
+#countdown { font-size:1.5rem; color:#B45309; font-weight:700; margin:20px 0; } 
+
+/* EVENTS */
+.events-title { font-family:'Cormorant Garamond', serif; font-size:2.5rem; color:#B45309; letter-spacing: 4px; margin-bottom:10px; }
+.events-date { font-size:1rem; color:#7C2D12; letter-spacing: 3px; margin-bottom:30px; }
+.event-showcase { max-width:600px; margin:0 auto 40px; }
+.event-card-new { background:#fff; border-radius:25px; overflow:hidden; box-shadow:0 15px 40px rgba(180,83,9,0.15); margin-bottom:30px; }
+.event-image-wrapper { position:relative; width:100%; }
+.event-image-wrapper img { width:100%; height:500px; object-fit:cover; display:block; }
+@media (max-width: 600px) { .event-image-wrapper img { height:420px; } .event-overlay h3 { font-size:2.5rem; } }
+.event-overlay { position:absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; color:#fff; padding:20px; text-align:center; }
+.event-overlay .tagline { font-family:'Cormorant Garamond', serif; font-size:1rem; letter-spacing:2px; margin-bottom:10px; opacity:0.9; }
+.event-overlay h3 { font-family:'Allura', cursive; font-size:3rem; margin:10px 0; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+.event-overlay .date-big { font-size:1.3rem; font-weight:600; margin:10px 0; }
+.event-overlay .date-big span { font-size:2.5rem; font-weight:700; margin:0 10px; }
+.event-overlay .time { font-size:1.1rem; margin-top:10px; }
+.venue-info { background:white; padding:20px; border-radius:15px; margin-top:-10px; }
+.venue-info p { font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.1rem; color:#5a3e2b; margin-bottom:15px; }
+.view-map-btn { background:#C25E3C; color:white; border:none; padding:14px 40px; border-radius:50px; font-size:0.95rem; font-weight:600; letter-spacing:1px; cursor:pointer; transition:0.3s; }
+.view-map-btn:hover { background:#A04E32; transform:scale(1.05); }
+
+/* CONTACT BOX */
+.contact-box { max-width:600px; margin:20px auto 0; background:#FFF8F0; padding:20px; border-radius:15px; border:2px dashed #B45309; }
+.contact-box h4 { color:#B45309; font-family:'Cormorant Garamond', serif; font-size:1.3rem; margin-bottom:10px; }
+.contact-box p { font-size:1.1rem; color:#4A2C2A; margin:5px 0; }
+.contact-box a { color:#C25E3C; font-weight:700; text-decoration:none; }
+
+/* FOOTER */
+.footer { background:#7C2D12; color:#FFFFF0; text-align:center; padding:25px 20px; margin-top:50px; }
+.footer .credit span { color:#D4AF37; font-weight:700; }
+.footer .credit a { color:#D4AF37; text-decoration:none; }
+</style> 
+</head> 
+<body> 
+
+<!-- ANIMATIONS CONTAINER -->
+<div id="animations-container"></div>
+
+<!-- 1. ENVELOPE -->
+<div class="envelope" id="envelope" onclick="openInvite()"> 
+  <h3>Tap to Reveal</h3> 
+  <div class="seal">
+    <span class="a">A</span>
+    <span class="heart">❤️</span>
+    <span class="s">S</span>
+  </div> 
+  <p>We invite you to celebrate the wedding of<br><b>Anil & Swetha</b></p> 
+</div> 
+
+<!-- 2. MAIN INVITE -->
+<div class="section" id="main"> 
+  <div class="card"> 
+    <div class="shloka">వక్రతుండ మహాకాయ సూర్యకోటి సమప్రభ<br>నిర్విఘ్నం కురు మే దేవ సర్వకార్యేషు సర్వదా</div> 
+    <p style="margin:20px 0;">With the blessings of the Almighty & our respected elders,<br>we joyfully request your gracious presence on the wedding celebration of</p> 
+    <h1>Anil Kumar</h1>  
+    <p>Son of Smt. & Sri Pedada Somayya, Rama Ratnam</p> 
+    <h2 style="font-family:'Allura', cursive; font-size:2.5rem; color:#B45309;">&</h2> 
+    <h1>Swetha</h1>  
+    <p>Daughter of Smt. & Sri Gurugubelli Venkata Appalanaidu, Ramanamma</p> 
+    <hr style="margin:30px 0; border-color:#E7CFC1;"> 
+    <h2>27th August 2026</h2> 
+    <p>Thursday, Early hours of Friday</p> 
+    <p><b>Sumuhurtham:</b> 3:22 AM</p> 
+    <div id="countdown"></div> 
+  </div> 
+</div>
+
+<!-- 3. EVENTS -->
+<div class="section" id="events"> 
+  <p class="events-date">27TH AUGUST, 2026</p>
+  <h2 class="events-title">Events</h2>
+
+  <div class="event-showcase">
+    <div class="event-card-new">
+      <div class="event-image-wrapper">
+        <img src="https://drive.google.com/uc?export=view&id=1FLX55gcyVKv1rabC4zdn4M7sezm3L7VH" alt="Reception">
+        <div class="event-overlay">
+          <p class="tagline">An evening of love & laughter</p>
+          <h3>Reception</h3>
+          <p class="date-big">Thursday <span>27</span> August 2026</p>
+          <p class="time">7:00 PM Onwards</p>
+        </div>
+      </div>
+      <div class="venue-info">
+        <p>Venue: Sri Lakshmi Ganapathi Kalyana Mandapam, Vizianagaram</p>
+        <button class="view-map-btn" onclick="window.open('https://maps.app.goo.gl/4u3fLwpxxr6e5cyd9')">VIEW ON MAPS</button>
+      </div>
+    </div>
+
+    <div class="event-card-new">
+      <div class="event-image-wrapper">
+        <img src="https://drive.google.com/uc?export=view&id=1LT09qK2ijnC755RBm8rLdfkXoBnYFO10" alt="Wedding">
+        <div class="event-overlay">
+          <p class="tagline">Sacred vows, eternal bond</p>
+          <h3>Wedding Ceremony</h3>
+          <p class="date-big">Thursday <span>27</span> August 2026</p>
+          <p class="time">3:22 AM</p>
+        </div>
+      </div>
+      <div class="venue-info">
+        <p>Venue: Sri Lakshmi Ganapathi Kalyana Mandapam, Vizianagaram</p>
+        <button class="view-map-btn" onclick="window.open('https://maps.app.goo.gl/4u3fLwpxxr6e5cyd9')">VIEW ON MAPS</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VENUE + CONTACT -->
+  <div style="max-width:600px; margin:30px auto; background:white; padding:25px; border-radius:20px;">
+    <h3 style="color:#B45309; margin-bottom:10px;">Venue Location</h3>
+    <p>Sri Lakshmi Ganapathi Kalyana Mandapam<br>Near Collector Office, Gantyada Road, Vizianagaram</p>
+    <button class="view-map-btn" onclick="window.open('https://maps.app.goo.gl/4u3fLwpxxr6e5cyd9')">OPEN IN GOOGLE MAPS</button>
+    
+    <div class="contact-box">
+      <h4>For any queries, Please contact</h4>
+      <p>📞 <a href="tel:9500155100">95001 55100</a></p>
+      <p>📞 <a href="tel:8978226803">89782 26803</a></p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p class="credit">Made with ❤️ by <span>Vamsi Krishna Paidi</span> | <a href="https://www.instagram.com/vamsikrishna_paidi?igsh=MTg2OXpiemdja204Mg==" target="_blank">@vamsikrishna_paidi</a></p>
+    <p>© 2026 Anil & Swetha Wedding</p>
+  </div>
+</div> 
+
+<script> 
+function createAnimations() {
+  const container = document.getElementById('animations-container');
+  
+  // 40 PETALS ONLY
+  for(let i=0;i<40;i++){
+    let p=document.createElement('div');
+    p.className='petal';
+    p.style.left=Math.random()*100+'%';
+    p.style.animationDelay=Math.random()*8+'s';
+    p.style.animationDuration=(8 + Math.random()*4)+'s';
+    container.appendChild(p);
+  }
+}
+
+function openInvite(){ 
+  let burst = document.createElement('div');
+  burst.style.cssText = 'position:fixed;top:50%;left:50%;width:20px;height:20px;background:#D4AF37;border-radius:50%;transform:translate(-50%,-50%);animation:burst 0.8s ease-out forwards;z-index:1000;pointer-events:none;';
+  document.body.appendChild(burst);
+  setTimeout(()=>burst.remove(), 800);
+
+  document.getElementById('envelope').classList.add('hide'); 
+  setTimeout(()=>{
+    document.querySelectorAll('.section').forEach(s=>s.classList.add('active'));
+  }, 700);
+} 
+
+window.addEventListener('load', createAnimations);
+
+const style = document.createElement('style');
+style.innerHTML = `@keyframes burst {0% { transform: translate(-50%, -50%) scale(1); opacity: 1; } 100% { transform: translate(-50%, -50%) scale(30); opacity: 0; }}`;
+document.head.appendChild(style);
+
+const weddingDate = new Date("Aug 27, 2026 03:22:00").getTime(); 
+setInterval(()=>{ 
+  let now = new Date().getTime(); 
+  let d = weddingDate - now; 
+  let days = Math.floor(d/(1000*60*60*24)); 
+  if(days >= 0) document.getElementById('countdown').innerHTML = days + " Days to Go"; 
+},1000); 
+</script> 
+</body> 
+</html>

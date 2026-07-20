@@ -1,0 +1,90 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Anil & Swetha Wedding Invitation</title> 
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@600&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="style.css">
+</head> 
+<body> 
+
+<audio id="bgMusic" loop>
+  <source src="thudakam-mangalyam.mp3" type="audio/mp3">
+</audio>
+
+<button class="music-btn" id="musicBtn">🎵</button>
+<div id="animations-container"></div>
+
+<div class="envelope" id="envelope"> 
+  <h3>Tap to Reveal</h3> 
+  <div class="seal"><span class="a">A</span><span class="heart">❤️</span><span class="s">S</span></div> 
+  <p>We invite you to celebrate the wedding of<br><b>Anil & Swetha</b></p> 
+</div> 
+
+<div class="section" id="main"> 
+  <div class="blessing-bar">
+    <span class="left">Srirasthu</span>
+    <span>Subhamasthu</span>
+    <span class="right">Avighnamasthu</span>
+  </div>
+  <div class="card"> 
+    <div class="shloka">వక్రతుండ మహాకాయ సూర్యకోటి సమప్రభ<br>నిర్విఘ్నం కురు మే దేవ సర్వకార్యేషు సర్వదా</div> 
+    <p style="margin:20px 0;">With the blessings of the Almighty & our respected elders,<br>we joyfully request your gracious presence on the wedding celebration of</p> 
+    <h1>Anil Kumar</h1>  
+    <p>Son of Smt. & Sri Pedada Somayya, Rama Ratnam</p> 
+    <h2 class="ampersand">&</h2> 
+    <h1>Swetha</h1>  
+    <p>Daughter of Smt. & Sri Gurugubelli Venkata Appalanaidu, Ramanamma</p> 
+    <hr> 
+    <h2>27th August 2026</h2> 
+    <p>Thursday, Early hours of Friday</p> 
+    <p><b>Sumuhurtham:</b> 3:22 AM</p> 
+    <div id="countdown"></div> 
+  </div> 
+</div>
+
+<div class="section" id="events"> 
+  <!-- Events section same as before with reception.jpg and wedding.jpg -->
+  <p class="events-date">27TH AUGUST, 2026</p>
+  <h2 class="events-title">Events</h2>
+  <div class="event-showcase">
+    <div class="event-card-new">
+      <div class="event-image-wrapper">
+        <img src="reception.jpg" alt="Reception">
+        <div class="event-overlay">
+          <p class="tagline">An evening of love & laughter</p>
+          <h3>Reception</h3>
+          <p class="date-big">Thursday <span>27</span> August 2026</p>
+          <p class="time">7:00 PM Onwards</p>
+        </div>
+      </div>
+      <div class="venue-info">
+        <p>Venue: Sri Lakshmi Ganapathi Kalyana Mandapam, Vizianagaram</p>
+        <button class="view-map-btn" onclick="window.open('https://maps.app.goo.gl/4u3fLwpxxr6e5cyd9')">VIEW ON MAPS</button>
+      </div>
+    </div>
+    <div class="event-card-new">
+      <div class="event-image-wrapper">
+        <img src="wedding.jpg" alt="Wedding">
+        <div class="event-overlay">
+          <p class="tagline">Sacred vows, eternal bond</p>
+          <h3>Wedding Ceremony</h3>
+          <p class="date-big">Thursday <span>27</span> August 2026</p>
+          <p class="time">3:22 AM</p>
+        </div>
+      </div>
+      <div class="venue-info">
+        <p>Venue: Sri Lakshmi Ganapathi Kalyana Mandapam, Vizianagaram</p>
+        <button class="view-map-btn" onclick="window.open('https://maps.app.goo.gl/4u3fLwpxxr6e5cyd9')">VIEW ON MAPS</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <p class="credit">Made with ❤️ by <span>Vamsi Krishna Paidi</span></p>
+  </div>
+</div> 
+
+<script src="script.js"></script>
+</body> 
+</html>
